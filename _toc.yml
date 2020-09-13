@@ -1,5 +1,14 @@
-- file: intro
-- file: content
-  sections:
-    - file: markdown
-    - file: notebooks
+- file: Introduction/intro
+- part: Introduction
+  chapters:
+    - file: Introduction/content
+    - file: Introduction/markdown
+    - file: Introduction/notebooks
+- part: 4Dsegment
+  chapters:
+    - file: 4Dsegment/README
+    - file: 4Dsegment/data
+- part: 4Dsurvival
+  chapters:
+    - file: 4Dsurvival/README
+    - file: 4Dsurvival/data
