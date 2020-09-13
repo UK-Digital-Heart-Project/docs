@@ -1,2 +1,5 @@
 wget https://raw.githubusercontent.com/UK-Digital-Heart-Project/4Dsegment/master/README.md -P ./4Dsegment -N
+wget https://raw.githubusercontent.com/UK-Digital-Heart-Project/4Dsegment/master/data/screen.gif -P ./4Dsegment/data -N
+
 wget https://raw.githubusercontent.com/UK-Digital-Heart-Project/4Dsurvival/master/README.md -P ./4Dsurvival -N
+wget https://raw.githubusercontent.com/UK-Digital-Heart-Project/4Dsurvival/master/data/DAE3.png -P ./4Dsurvival/data -N

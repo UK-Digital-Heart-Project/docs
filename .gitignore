@@ -1,2 +1,5 @@
 .idea/
 _build/
+*.jpg
+*.png
+*.gif

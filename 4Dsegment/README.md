@@ -6,7 +6,7 @@
 
 The code in this repository implements 4D*segment*, a pipeline for carrying out deep learning segmentation, non-rigid co-registration, mesh generation and motion tracking using raw grey-scale cardiac MRI data in NIfTI format. The implementation was first trained using manual annotations and then deployed on pulmonary hypertension (PH) patients to produce segmentation labels and computational meshes. The whole process is fully automated without any manual input. 
 
-## Overview
+# Overview
 The files in this repository are organized into 3 directories:
 * [code](code) : contains base functions for segmentation, co-registration, mesh generation, and motion tracking:
   * code entrance - [code/DMACS.py](code/DMACS.py)

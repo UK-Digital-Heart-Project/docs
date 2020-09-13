@@ -3,7 +3,7 @@
 
 The code in this repository implements 4D*survival*, a deep neural network for carrying out classification/prediction using 3D motion input data. The present implementation was trained using MRI-derived heart motion data and survival outcomes on pulmonary hypertension patients. 
 
-## Overview
+# Overview
 The files in this repository are organized into 3 directories:
 * [code](code) : contains base functions for fitting the 2 types of statistical models used in our paper: 4D*survival* (supervised denoising autoencoder for survival outcomes) and a penalized Cox Proportional Hazards regression model.
 * [demo](demo) : contains functions for the statistical analyses carried out in our paper:
