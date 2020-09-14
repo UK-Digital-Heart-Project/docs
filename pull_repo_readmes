@@ -3,3 +3,6 @@ wget https://raw.githubusercontent.com/UK-Digital-Heart-Project/4Dsegment/master
 
 wget https://raw.githubusercontent.com/UK-Digital-Heart-Project/4Dsurvival/master/README.md -P ./4Dsurvival -N
 wget https://raw.githubusercontent.com/UK-Digital-Heart-Project/4Dsurvival/master/data/DAE3.png -P ./4Dsurvival/data -N
+
+wget https://raw.githubusercontent.com/UK-Digital-Heart-Project/MRI-VQ-mapping/master/README.md -P ./MRI-VQ-mapping -N
+
