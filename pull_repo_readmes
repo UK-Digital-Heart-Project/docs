@@ -1,8 +1,10 @@
-wget https://raw.githubusercontent.com/UK-Digital-Heart-Project/4Dsegment/master/README.md -P ./4Dsegment -N
-wget https://raw.githubusercontent.com/UK-Digital-Heart-Project/4Dsegment/master/data/screen.gif -P ./4Dsegment/data -N
+wget https://raw.githubusercontent.com/UK-Digital-Heart-Project/4Dsegment/master/README.md -P ./4Dsegment -N --no-check-certificate
+wget https://raw.githubusercontent.com/UK-Digital-Heart-Project/4Dsegment/master/data/screen.gif -P ./4Dsegment/data -N --no-check-certificate
 
-wget https://raw.githubusercontent.com/UK-Digital-Heart-Project/4Dsurvival/master/README.md -P ./4Dsurvival -N
-wget https://raw.githubusercontent.com/UK-Digital-Heart-Project/4Dsurvival/master/data/DAE3.png -P ./4Dsurvival/data -N
+wget https://raw.githubusercontent.com/UK-Digital-Heart-Project/4Dsurvival/master/README.md -P ./4Dsurvival -N --no-check-certificate
+wget https://raw.githubusercontent.com/UK-Digital-Heart-Project/4Dsurvival/master/data/DAE3.png -P ./4Dsurvival/data -N --no-check-certificate
 
-wget https://raw.githubusercontent.com/UK-Digital-Heart-Project/MRI-VQ-mapping/master/README.md -P ./MRI-VQ-mapping -N
+wget https://raw.githubusercontent.com/UK-Digital-Heart-Project/MRI-VQ-mapping/master/README.md -P ./MRI-VQ-mapping -N --no-check-certificate
+
+wget https://raw.githubusercontent.com/UK-Digital-Heart-Project/AutoFD/master/README.md -P ./AutoFD -N --no-check-certificate
 

@@ -16,3 +16,6 @@
 - part: MRI-VQ-mapping
   chapters:
     - file: MRI-VQ-mapping/README.md
+- part: AutoFD
+  chapters:
+    - file: AutoFD/README.md
