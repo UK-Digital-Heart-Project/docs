@@ -13,3 +13,6 @@
   chapters:
     - file: 4Dsurvival/README
     - file: 4Dsurvival/data
+- part: MRI-VQ-mapping
+  chapters:
+    - file: MRI-VQ-mapping/README.md
