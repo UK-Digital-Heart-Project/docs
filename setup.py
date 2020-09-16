@@ -9,7 +9,7 @@ setup(
     packages=find_namespace_packages(where="lib"),
     setup_requires=["setuptools >= 40.0.0"],
     install_requires=[],
-    package_data={"": ["*.conf", "*.yml"]},
+    package_data={"": ["*.conf", "*.yml", ".md"]},
     entry_points={
         'console_scripts': ['lms-book = lms_book.cli:main']
     },
