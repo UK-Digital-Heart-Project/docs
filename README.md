@@ -32,6 +32,7 @@ lms-book publish {message}
     ```
     lms-book sync
     ``` 
+    Notice that, for Windows user, please run the command in git bash terminal.
     
   - `create`
     
