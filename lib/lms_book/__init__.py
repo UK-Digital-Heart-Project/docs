@@ -7,7 +7,7 @@ from pathlib import Path
 from typing import List, Dict
 from urllib.parse import urlparse
 
-
+logging.basicConfig(level=logging.INFO)
 LOGGER = logging.getLogger("lms-book")
 LOGGER.setLevel("INFO")
 
