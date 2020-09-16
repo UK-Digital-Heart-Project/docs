@@ -3,3 +3,4 @@ _build/
 *.jpg
 *.png
 *.gif
+tests/output

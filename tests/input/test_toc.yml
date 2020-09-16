@@ -1,0 +1,21 @@
+- file: Introduction/intro
+- part: Introduction
+  chapters:
+    - file: Introduction/content
+    - file: Introduction/markdown
+    - file: Introduction/notebooks
+    - file: Introduction/UKBB40616_README
+- part: 4Dsegment
+  chapters:
+    - file: 4Dsegment/README
+    - file: 4Dsegment/data
+- part: 4Dsurvival
+  chapters:
+    - file: 4Dsurvival/README
+    - file: 4Dsurvival/data
+- part: MRI-VQ-mapping
+  chapters:
+    - file: MRI-VQ-mapping/README.md
+- part: AutoFD
+  chapters:
+    - file: AutoFD/README.md
