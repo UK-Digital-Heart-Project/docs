@@ -1,7 +1,6 @@
 import sys
 from typing import List
-from argparse import ArgumentParser
-from lms_book import LMSBookCommand, create_part, create_chapter, publish, pull, sync
+from lms_book import LMSBookCommand, create_part, create_chapter, publish, pull, sync, LOGGER
 
 
 def main():
@@ -26,6 +25,7 @@ def parse_command(command: LMSBookCommand, argv: List[str]):
 
 def parse_commands(argv=None):
     try:
+        LOGGER.info("Running command: {}".format(" ".join(argv)))
         command = LMSBookCommand.from_str(argv[1])
     except KeyError:
         if argv in ["-i", "--interactive"]:
@@ -36,5 +36,3 @@ def parse_commands(argv=None):
                 "Valid commands are create, pull, publish, and sync. Or you can run it interactively with -i option."
             )
     parse_command(command, argv[2:])
-    parser = ArgumentParser()
-    parser.add_argument()

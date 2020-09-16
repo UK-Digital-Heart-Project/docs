@@ -1,10 +1,14 @@
 import os
 import yaml
+import logging
+from git import Repo
 from enum import Enum
 from pathlib import Path
 from typing import List, Dict
 from urllib.parse import urlparse
-from git import Repo
+
+
+LOGGER = logging.getLogger("lms-book")
 
 
 class LMSBookCommand(Enum):
@@ -34,10 +38,12 @@ def save_toc(toc: List[Dict], toc_yml_path: Path):
                 output_str += "    - {key}: {value}\n".format(key="file", value=file["file"])
     with open(str(toc_yml_path), "w") as f:
         f.write(output_str)
+    LOGGER.info("toc saved to: {}".format(str(toc_yml_path)))
 
 
 def read_toc(toc_yml_path: Path = None) -> List[Dict]:
     toc_yml_path = default_toc_yml_path if toc_yml_path is None else toc_yml_path
+    LOGGER.info("Reading toc from: {}".format(str(toc_yml_path)))
     with open(str(toc_yml_path)) as f:
         toc = yaml.load(f, Loader=yaml.FullLoader)
     return toc
@@ -45,11 +51,14 @@ def read_toc(toc_yml_path: Path = None) -> List[Dict]:
 
 def create_part(part_name: str, toc_yml_path: Path = None):
     toc = read_toc(toc_yml_path)
+    LOGGER.info("Creating part: {}".format(part_name))
     toc.append({"part": part_name})
     save_toc(toc, toc_yml_path)
 
 
 def create_chapter(part_name: str, file_path: str, toc_yml_path: Path = None):
+    LOGGER.info("Creating chapter for part: {}".format(part_name))
+
     toc = read_toc(toc_yml_path)
     part_index = 0
     for i, part in enumerate(toc):
@@ -90,6 +99,7 @@ def pull(url: str, file_dir: str = None, toc_dir: Path = None):
     toc_dir = default_toc_yml_path.parent if toc_dir is None else toc_dir
     abs_file_dir = str(toc_dir.joinpath(file_dir))
     wget_command = "wget {url} -P {file_dir} -N --no-check-certificate".format(url=url, file_dir=abs_file_dir)
+    LOGGER.info("Executing wget: {}".format(wget_command))
     os.system(wget_command)
     return file_path
 
@@ -99,16 +109,19 @@ def publish(message: str):
     if len(repo.index.diff(None)) > 0 or len(repo.untracked_files) > 0:
         change_files = []
         for diff in repo.index.diff(None):
-            print(diff.a_path)
+            LOGGER.info("Adding unstaged file: {}".format(diff.a_path))
             change_files.append(diff.a_path)
         for file in repo.untracked_files:
-            print(file)
+            LOGGER.info("Adding untracked file: {}".format(file))
             change_files.append(file)
         repo.index.add(change_files)
         repo.index.commit(message)
+        LOGGER.info("Commit: {}".format(message))
+        LOGGER.info("Pushing to remote...")
         repo.remotes.origin.push()
 
 
 def sync():
+    LOGGER.info("Pulling from remote...")
     repo = Repo(str(default_toc_yml_path.parent))
-    repo.remotes.origin.push()
+    repo.remotes.origin.pull()
