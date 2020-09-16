@@ -1,4 +1,5 @@
 import os
+import sys
 import yaml
 import logging
 from git import Repo
@@ -147,4 +148,7 @@ def sync():
     repo = Repo(str(default_toc_yml_path.parent))
     repo.remotes.origin.pull()
     LOGGER.info(" Pulling READMEs from other repos using pull_repo_readmes script...")
-    os.system("bash {}".format(str(default_toc_yml_path.parent.joinpath("pull_repo_readmes"))))
+    if sys.platform.startswith('win'):
+        os.system("cmd < {}".format(str(default_toc_yml_path.parent.joinpath("pull_repo_readmes"))))
+    else:
+        os.system("bash {}".format(str(default_toc_yml_path.parent.joinpath("pull_repo_readmes"))))

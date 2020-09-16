@@ -28,22 +28,20 @@ lms-book pull {url} {file_dir}
 lms-book publish {message}
 ```
 
-After installation, you can run these command using command prompt or bash shell anywhere.
+After installation, you can run these command using bash shell, command prompt or git bash anywhere.
 
   - `sync`
   
     This sync your local book with remote book in github. It is equivalent to 
     ```
     git pull
-    bash ./pull_repo_readmes
+    bash ./pull_repo_readmes (or cmd < pull_repo_readmes in windows)
     ```
     Please remember to always do this first before you make changes and publish to remote.
   
     ```
     lms-book sync
-    ``` 
-    Notice that, for Windows user, please run the command in git bash terminal.
-    
+    ```     
   - `create`
     
     This is used to create a new `part` or `chapter`.
