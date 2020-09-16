@@ -99,8 +99,10 @@ def publish(message: str):
     if len(repo.index.diff(None)) > 0 or len(repo.untracked_files) > 0:
         change_files = []
         for diff in repo.index.diff(None):
+            print(diff.a_path)
             change_files.append(diff.a_path)
         for file in repo.untracked_files:
+            print(file)
             change_files.append(file)
         repo.index.add(change_files)
         repo.index.commit(message)

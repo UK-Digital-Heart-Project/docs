@@ -1,10 +1,11 @@
+import sys
 from typing import List
 from argparse import ArgumentParser
 from lms_book import LMSBookCommand, create_part, create_chapter, publish, pull, sync
 
 
 def main():
-    pass
+    parse_commands(sys.argv)
 
 
 def parse_command(command: LMSBookCommand, argv: List[str]):
@@ -37,5 +38,3 @@ def parse_commands(argv=None):
     parse_command(command, argv[2:])
     parser = ArgumentParser()
     parser.add_argument()
-    pass
-
