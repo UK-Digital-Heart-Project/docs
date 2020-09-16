@@ -1,9 +1,7 @@
-import pytest
 import unittest
 from lms_book import create_part, create_chapter
 from tests import TEST_INPUT_DIR, TEST_OUTPUT_DIR
 import shutil
-import yaml
 
 
 class CreateCommandTest(unittest.TestCase):
@@ -40,7 +38,8 @@ class CreateCommandTest(unittest.TestCase):
         create_chapter(
             part_name="test_part",
             file_path="https://raw.githubusercontent.com/UK-Digital-Heart-Project/4Dsurvival/master/data/DAE3.png",
-            toc_yml_path=yml_path
+            toc_yml_path=yml_path,
+            save_to_pull_script=False,
         )
         img_path = TEST_OUTPUT_DIR.joinpath("4Dsurvival", "data", "DAE3.png")
         self.assertTrue(img_path.exists())

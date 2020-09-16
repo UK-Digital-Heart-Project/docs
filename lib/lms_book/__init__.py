@@ -57,7 +57,7 @@ def create_part(part_name: str, toc_yml_path: Path = None):
     save_toc(toc, toc_yml_path)
 
 
-def create_chapter(part_name: str, file_path: str, toc_yml_path: Path = None):
+def create_chapter(part_name: str, file_path: str, toc_yml_path: Path = None, save_to_pull_script: bool = False):
     LOGGER.info(" Creating chapter for part: {}".format(part_name))
 
     toc = read_toc(toc_yml_path)
@@ -77,12 +77,20 @@ def create_chapter(part_name: str, file_path: str, toc_yml_path: Path = None):
     if "chapters" not in part:
         part["chapters"] = []
     if file_path.startswith("http"):
-        file_path = pull(file_path, toc_dir=toc_yml_path.parent)
+        file_path = pull(file_path, toc_dir=toc_yml_path.parent, save_to_pull_script=save_to_pull_script)
+    else:
+        # touch a file at file_path, and notifying user to go there for further edit
+        if not default_toc_yml_path.parent.joinpath(file_path).exists():
+            default_toc_yml_path.parent.joinpath(file_path).touch()
+            LOGGER.info(" Created a new empty file at: {}".format(str(default_toc_yml_path.parent.joinpath(file_path))))
+            LOGGER.info(" Please navigate to that location to edit. "
+                        "Afterwards use lms-book publish to publish your new chapter")
+
     part["chapters"].append({"file": file_path})
     save_toc(toc, toc_yml_path)
 
 
-def pull(url: str, file_dir: str = None, toc_dir: Path = None):
+def pull(url: str, file_dir: str = None, toc_dir: Path = None, save_to_pull_script: bool = True):
     """
     file_dir is relative to root repo dir (toc dir), i.e. 4Dsurvival/data. If is None, then will interpret from url.
     We assume url follow the following structure:
@@ -102,6 +110,15 @@ def pull(url: str, file_dir: str = None, toc_dir: Path = None):
     wget_command = "wget {url} -P {file_dir} -N --no-check-certificate".format(url=url, file_dir=abs_file_dir)
     LOGGER.info(" Executing wget: {}".format(wget_command))
     os.system(wget_command)
+    # add wget command to pull repo readmes
+    if save_to_pull_script:
+        with open(str(toc_dir.joinpath("pull_repo_readmes")), "r") as f:
+            script = f.read()
+        with open(str(toc_dir.joinpath("pull_repo_readmes")), "w") as f:
+            wget_command = "wget {url} -P {file_dir} -N --no-check-certificate".format(url=url, file_dir=file_dir)
+
+            script += wget_command + "\n"
+            f.write(script)
     return file_path
 
 
@@ -126,3 +143,5 @@ def sync():
     LOGGER.info(" Pulling from remote...")
     repo = Repo(str(default_toc_yml_path.parent))
     repo.remotes.origin.pull()
+    LOGGER.info(" Pulling READMEs from other repos using pull_repo_readmes script...")
+    os.system("bash {}".format(str(default_toc_yml_path.parent.joinpath("pull_repo_readmes"))))

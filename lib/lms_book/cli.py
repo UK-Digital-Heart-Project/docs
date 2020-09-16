@@ -25,14 +25,10 @@ def parse_command(command: LMSBookCommand, argv: List[str]):
 
 def parse_commands(argv=None):
     try:
-        LOGGER.info("Running command: {}".format(" ".join(argv)))
+        LOGGER.info(" Running command: {}".format(" ".join(argv)))
         command = LMSBookCommand.from_str(argv[1])
     except KeyError:
-        if argv in ["-i", "--interactive"]:
-            interactive()
-            exit(0)
-        else:
-            raise KeyError(
-                "Valid commands are create, pull, publish, and sync. Or you can run it interactively with -i option."
-            )
+        raise KeyError(
+            "Valid commands are create, pull, publish, and sync. Or you can run it interactively with -i option."
+        )
     parse_command(command, argv[2:])
