@@ -9,6 +9,7 @@ from urllib.parse import urlparse
 
 
 LOGGER = logging.getLogger("lms-book")
+LOGGER.setLevel("INFO")
 
 
 class LMSBookCommand(Enum):
