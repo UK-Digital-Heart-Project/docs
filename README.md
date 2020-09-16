@@ -1,4 +1,9 @@
-# How to use Jupyter book
+# lms-book
+
+This repo contains all the documentations (markdown, notebooks, images etc) inside `doc` directory, and `lms-book` tool
+to create, publish and sync contents (inside `lib` directory, installation guide in below). `_toc.yml` specifies the 
+structure of the book with reference to each documentation path. `pull_repo_readmes` is a shell script to pull
+all readmes from other github repos (or you could use `lms-book sync` command in CLI after installation). 
 
 ## lms-book tool
 To make it easier to create, sync and publish documentations, we created `lms-book` tool,

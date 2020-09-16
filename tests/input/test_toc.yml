@@ -1,21 +1,21 @@
-- file: Introduction/intro
+- file: doc/Introduction/intro
 - part: Introduction
   chapters:
-    - file: Introduction/content
-    - file: Introduction/markdown
-    - file: Introduction/notebooks
-    - file: Introduction/UKBB40616_README
+    - file: doc/Introduction/content
+    - file: doc/Introduction/markdown
+    - file: doc/Introduction/notebooks
+    - file: doc/Introduction/UKBB40616_README
 - part: 4Dsegment
   chapters:
-    - file: 4Dsegment/README
-    - file: 4Dsegment/data
+    - file: doc/4Dsegment/README
+    - file: doc/4Dsegment/data
 - part: 4Dsurvival
   chapters:
-    - file: 4Dsurvival/README
-    - file: 4Dsurvival/data
+    - file: doc/4Dsurvival/README
+    - file: doc/4Dsurvival/data
 - part: MRI-VQ-mapping
   chapters:
-    - file: MRI-VQ-mapping/README.md
+    - file: doc/MRI-VQ-mapping/README.md
 - part: AutoFD
   chapters:
-    - file: AutoFD/README.md
+    - file: doc/AutoFD/README.md

@@ -16,6 +16,8 @@ class CreateCommandTest(unittest.TestCase):
         shutil.copy(str(self.test_toc_yml_path), str(yml_path))
         # test if part name exists
         create_chapter("AutoFD", "file/readme.md", yml_path)
+        self.assertTrue(TEST_OUTPUT_DIR.joinpath("file", "readme.md").exists())
+        TEST_OUTPUT_DIR.joinpath("file", "readme.md").unlink()
         with open(str(self.test_toc_yml_path)) as f:
             original_yml = f.read()
             original_yml += "    - file: file/readme.md\n"
@@ -26,6 +28,8 @@ class CreateCommandTest(unittest.TestCase):
         # test if part name not exists
         shutil.copy(str(self.test_toc_yml_path), str(yml_path))
         create_chapter("test_part", "file/readme.md", yml_path)
+        self.assertTrue(TEST_OUTPUT_DIR.joinpath("file", "readme.md").exists())
+        TEST_OUTPUT_DIR.joinpath("file", "readme.md").unlink()
         with open(str(self.test_toc_yml_path)) as f:
             original_yml = f.read()
             original_yml += "- part: test_part\n  chapters:\n    - file: file/readme.md\n"
@@ -45,7 +49,7 @@ class CreateCommandTest(unittest.TestCase):
         self.assertTrue(img_path.exists())
         with open(str(self.test_toc_yml_path)) as f:
             original_yml = f.read()
-            original_yml += "- part: test_part\n  chapters:\n    - file: 4Dsurvival/data/DAE3.png\n"
+            original_yml += "- part: test_part\n  chapters:\n    - file: doc/4Dsurvival/data/DAE3.png\n"
         with open(str(yml_path)) as f:
             output_yml = f.read()
         self.assertEqual(original_yml, output_yml)

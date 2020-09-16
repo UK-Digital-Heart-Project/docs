@@ -58,6 +58,8 @@ def create_part(part_name: str, toc_yml_path: Path = None):
 
 
 def create_chapter(part_name: str, file_path: str, toc_yml_path: Path = None, save_to_pull_script: bool = False):
+    toc_yml_path = default_toc_yml_path if toc_yml_path is None else toc_yml_path
+
     LOGGER.info(" Creating chapter for part: {}".format(part_name))
 
     toc = read_toc(toc_yml_path)
@@ -80,9 +82,10 @@ def create_chapter(part_name: str, file_path: str, toc_yml_path: Path = None, sa
         file_path = pull(file_path, toc_dir=toc_yml_path.parent, save_to_pull_script=save_to_pull_script)
     else:
         # touch a file at file_path, and notifying user to go there for further edit
-        if not default_toc_yml_path.parent.joinpath(file_path).exists():
-            default_toc_yml_path.parent.joinpath(file_path).touch()
-            LOGGER.info(" Created a new empty file at: {}".format(str(default_toc_yml_path.parent.joinpath(file_path))))
+        if not toc_yml_path.parent.joinpath(file_path).exists():
+            toc_yml_path.parent.joinpath(file_path).parent.mkdir(exist_ok=True)
+            toc_yml_path.parent.joinpath(file_path).touch()
+            LOGGER.info(" Created a new empty file at: {}".format(str(toc_yml_path.parent.joinpath(file_path))))
             LOGGER.info(" Please navigate to that location to edit. "
                         "Afterwards use lms-book publish to publish your new chapter")
 
@@ -104,7 +107,7 @@ def pull(url: str, file_dir: str = None, toc_dir: Path = None, save_to_pull_scri
         file_dir.extend(url_parts[4:-1])
         file_dir = "/".join(file_dir)
     file_name = url_parts[-1]
-    file_path = "/".join([file_dir, file_name])
+    file_path = "/".join(["doc", file_dir, file_name])
     toc_dir = default_toc_yml_path.parent if toc_dir is None else toc_dir
     abs_file_dir = str(toc_dir.joinpath(file_dir))
     wget_command = "wget {url} -P {file_dir} -N --no-check-certificate".format(url=url, file_dir=abs_file_dir)
