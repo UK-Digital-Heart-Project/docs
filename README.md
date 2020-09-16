@@ -6,10 +6,13 @@ that you can run in command line.
 
 ### Installation
 ```
+cd {lms-book_dir}
 pip install -r requirements.txt
 python setup.py develop
 ```
 
+Noted that make sure `python` is python3.5+. If you have both python 2 and 3 install. Try `python3 setup.py develop`
+instead.
 ### commands
 lms-book contains the following commands:
 ```
@@ -19,6 +22,8 @@ lms-book create chapter {part_name} {file_path}
 lms-book pull {url} {file_dir}
 lms-book publish {message}
 ```
+
+After installation, you can run these command using command prompt or bash shell anywhere.
 
   - `sync`
   
