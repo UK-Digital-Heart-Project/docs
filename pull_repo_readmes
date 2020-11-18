@@ -1,10 +1,6 @@
 wget https://raw.githubusercontent.com/UK-Digital-Heart-Project/4Dsegment/master/README.md -P ./doc/4Dsegment -N --no-check-certificate
 wget https://raw.githubusercontent.com/UK-Digital-Heart-Project/4Dsegment/master/data/screen.gif -P ./doc/4Dsegment/data -N --no-check-certificate
-
 wget https://raw.githubusercontent.com/UK-Digital-Heart-Project/4Dsurvival/master/README.md -P ./doc/4Dsurvival -N --no-check-certificate
 wget https://raw.githubusercontent.com/UK-Digital-Heart-Project/4Dsurvival/master/data/DAE3.png -P ./doc/4Dsurvival/data -N --no-check-certificate
-
 wget https://raw.githubusercontent.com/UK-Digital-Heart-Project/MRI-VQ-mapping/master/README.md -P ./doc/MRI-VQ-mapping -N --no-check-certificate
-
 wget https://raw.githubusercontent.com/UK-Digital-Heart-Project/AutoFD/master/README.md -P ./doc/AutoFD -N --no-check-certificate
-
